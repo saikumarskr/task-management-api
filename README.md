@@ -549,3 +549,13 @@ This ensures:
 
 - Clean separation between business logic and error handling.
 - Consistent error format across the entire API.
+
+### Credits
+
+Developed and maintained by **Sai Kumar**.
+
+Special thanks to **Swagger / OpenAPI** for providing powerful tools for API documentation and testing.
+
+Appreciation to the Spring Boot team and open-source community.
+
+---
