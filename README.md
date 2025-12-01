@@ -10,7 +10,7 @@ This project manages **Employees**, **Tasks**, and **Users**, with:
 - **Swagger/OpenAPI** documentation
 - Layered architecture with DTOs, Services, Repositories, Filters, and Exception Handling
 
-## ✨ Features  (Scroll down you can find How to use this API)
+## ✨ Features  (Scroll down to find out How to use this API)
 
 - ✅ JWT authentication (`/signin/add`, `/signin/token`)
 - ✅ Role-based authorization (`ADMIN`, `USER`)
