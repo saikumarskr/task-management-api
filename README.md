@@ -97,15 +97,10 @@ task-management-api
 # 📌 API List (All Endpoints)
 
 Below is the complete list of APIs available in this project.
+<img width="1822" height="606" alt="Screenshot 2025-12-01 191808" src="https://github.com/user-attachments/assets/cfcda9f9-ca2d-4ec5-a672-5ea187997ba9" />
+<img width="1828" height="628" alt="Screenshot 2025-12-01 191831" src="https://github.com/user-attachments/assets/4b880e1e-957b-45bd-875b-5ab47f1e4f08" />
+<img width="1838" height="218" alt="Screenshot 2025-12-01 191851" src="https://github.com/user-attachments/assets/b5224e58-a814-4c7a-952b-cfea86256d95" />
 
-
-```markdown
-<img width="1822" height="606" alt="Screenshot 2025-12-01 191808" src="https://github.com/user-attachments/assets/0f82b4b9-15ec-443e-8f36-280e5eb8af85" />
-<img width="1828" height="628" alt="Screenshot 2025-12-01 191831" src="https://github.com/user-attachments/assets/cfe7b9a8-f538-4a3b-b49c-c2b848607fdb" />
-<img width="1838" height="218" alt="Screenshot 2025-12-01 191851" src="https://github.com/user-attachments/assets/d2a8cc20-6933-41c8-b2a1-ae54ca7ef1ec" />
-
-
-```
 
 ## 🔧 How to Use the API with Swagger
 
@@ -177,12 +172,8 @@ POST /signin/add
 
 ```
 
+<img width="1436" height="647" alt="Screenshot 2025-12-01 192057" src="https://github.com/user-attachments/assets/0179b58e-4527-4b4a-a903-d0e762101f76" />
 
-```markdown
-<img width="1436" height="647" alt="Screenshot 2025-12-01 192057" src="https://github.com/user-attachments/assets/ff22224f-6401-43ee-82c4-09aab53d5226" />
-
-
-```
 
 
 ## 🔐 Step 3 – Get Token (`POST /signin/token`)
@@ -214,13 +205,9 @@ POST /signin/token
 
 ```
 
+<img width="1452" height="721" alt="Screenshot 2025-12-01 192126" src="https://github.com/user-attachments/assets/18e3dc14-ed2b-434b-8254-59ac74c99145" />
+<img width="1406" height="546" alt="Screenshot 2025-12-01 192146" src="https://github.com/user-attachments/assets/4246b300-feef-43a5-9261-041bc86eb525" />
 
-```markdown
-<img width="1452" height="721" alt="Screenshot 2025-12-01 192126" src="https://github.com/user-attachments/assets/f20c7552-6097-439c-87e4-4ac73f07c0b3" />
-<img width="1406" height="546" alt="Screenshot 2025-12-01 192146" src="https://github.com/user-attachments/assets/d5ceb3a6-c485-46cc-a457-09623a86ff71" />
-
-
-```
 
 
 ## 🎫 Step 4 – Use Token in All Other APIs
@@ -241,12 +228,8 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 Swagger will now automatically send this token in the `Authorization` header for all secured APIs.
 
+<img width="834" height="376" alt="Screenshot 2025-12-01 192208" src="https://github.com/user-attachments/assets/31ece12d-5476-4368-b52e-2b831b9f93d6" />
 
-```markdown
-<img width="834" height="376" alt="Screenshot 2025-12-01 192208" src="https://github.com/user-attachments/assets/3cdd5fae-2678-4f9e-b3af-06b397aeb28b" />
-
-
-```
 
 You can now use the **default request bodies** shown in Swagger for:
 
