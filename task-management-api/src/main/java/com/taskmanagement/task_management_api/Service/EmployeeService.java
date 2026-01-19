@@ -7,6 +7,7 @@ import com.taskmanagement.task_management_api.Entity.Employee;
 import com.taskmanagement.task_management_api.Entity.Task;
 import com.taskmanagement.task_management_api.Entity.TaskStatus;
 import com.taskmanagement.task_management_api.Exception.EmployeeNotFoundException;
+import com.taskmanagement.task_management_api.Kafka.TaskEventProducer;
 import com.taskmanagement.task_management_api.Repository.EmployeeRepository;
 import com.taskmanagement.task_management_api.Repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;

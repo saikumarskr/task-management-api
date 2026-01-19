@@ -9,11 +9,14 @@ import com.taskmanagement.task_management_api.Entity.Task;
 import com.taskmanagement.task_management_api.Entity.TaskStatus;
 import com.taskmanagement.task_management_api.Exception.EmployeeNotFoundException;
 import com.taskmanagement.task_management_api.Exception.TaskNotFoundException;
+import com.taskmanagement.task_management_api.Kafka.TaskEventProducer;
 import com.taskmanagement.task_management_api.Repository.EmployeeRepository;
 import com.taskmanagement.task_management_api.Repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.annotation.Propagation;
@@ -23,13 +26,19 @@ import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
+    @Autowired
+    public JavaMailSender javaMailSender;
+
+
     private final TaskRepository taskRepository;
     private final EmployeeRepository employeeRepository;
+    private final TaskEventProducer taskEventProducer;
 
     @Autowired
-    public TaskService(TaskRepository taskRepository, EmployeeRepository employeeRepository) {
+    public TaskService(TaskRepository taskRepository, EmployeeRepository employeeRepository, TaskEventProducer taskEventProducer) {
         this.taskRepository = taskRepository;
         this.employeeRepository = employeeRepository;
+        this.taskEventProducer = taskEventProducer;
     }
 
 
@@ -46,6 +55,7 @@ public class TaskService {
             tasks = taskRepository.findByStatusAndEmployee_Id(status, employeeId, pageable);
         } else if (status != null) {
             tasks = taskRepository.findByStatus(status, pageable);
+
         } else if (employeeId != null) {
             tasks = taskRepository.findByEmployee_Id(employeeId, pageable);
         } else {
@@ -69,6 +79,16 @@ public class TaskService {
 
         employee.addTask(task);
         Task saved = taskRepository.save(task);
+        try {
+            SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+            simpleMailMessage.setTo(employee.getEmail());
+            simpleMailMessage.setSubject("New Task Assign");
+            simpleMailMessage.setText(employee.getTask().toString());
+            javaMailSender.send(simpleMailMessage);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
         return toResponse(saved);
     }
 
@@ -116,6 +136,10 @@ public class TaskService {
     public TaskResponse updateTaskStatus(Long taskId, TaskStatus status) {
         Task task = taskRepository.findByid(taskId)
                 .orElseThrow(() -> new TaskNotFoundException("Task not found with id: " + taskId));
+
+        if(status==TaskStatus.DONE){
+            taskEventProducer.publish(task.getEmployee());
+        }
         task.setStatus(status);
         return toResponse(task);
     }
