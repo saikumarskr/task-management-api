@@ -9,6 +9,8 @@ This project manages **Employees**, **Tasks**, and **Users**, with:
 - Role-based access: `ADMIN` and `USER`
 - **Swagger/OpenAPI** documentation
 - Layered architecture with DTOs, Services, Repositories, Filters, and Exception Handling
+- Email notifications on task updates
+- Kafka event-driven notifications on task completion
 
 ## ✨ Features  (Scroll down to find out How to use this API)
 
@@ -23,6 +25,7 @@ This project manages **Employees**, **Tasks**, and **Users**, with:
 - ✅ Entities mapped with **JPA/Hibernate** using lazy loading, cascading, and orphan removal
 - ✅ Unit tests for service layer (EmployeeService, TaskService)
 - ✅ Integrated **Swagger UI** for exploring and testing APIs
+- ✅ Integrated with Kafka and mail. 
 
 ## 🧱 Tech Stack
 
@@ -31,7 +34,7 @@ This project manages **Employees**, **Tasks**, and **Users**, with:
 - **Security**: Spring Security, JWT, `BCryptPasswordEncoder`
 - **Database**: (e.g.) MySQL (configurable)
 - **ORM**: Spring Data JPA / Hibernate
-- **Build Tool**: Maven
+- **Build Tool**: Maven , Kafka + mail
 - **Documentation**: Springdoc OpenAPI / Swagger UI
 
 
@@ -446,6 +449,47 @@ public void removeTask(Task task) {
 
 ---
 ```
+
+---
+
+## 🔔 Notification Enhancements (Email + Kafka)
+
+This project is enhanced with **real-time notifications** using **Email** and **Apache Kafka** to improve communication between Employees and Admins.
+
+
+## 📩 Email Notification on Task Update / Assignment
+
+### 📌 When Email is Sent
+An **email notification is sent to the assigned employee** when:
+
+- A task is **created and assigned**
+- A task is **updated** (title, priority, or reassigned employee)
+
+### 🔁 Flow
+
+
+### 🎯 Purpose
+- Ensures employees are instantly informed
+- Removes need to manually check task updates
+- Improves productivity and accountability
+
+
+## 🛎️ Kafka Notification on Task Completion (DONE)
+
+### 🧠 Use Case
+When an **employee updates the task status to `DONE`**, the system notifies the **ADMIN** asynchronously using **Apache Kafka**.
+
+
+## 📡 Kafka Producer – Employee Side
+
+- Triggered when task status changes to **DONE**
+- Publishes a **Task Completion Event** to Kafka topic
+
+📍 **Producer Class**
+
+
+Kafka/TaskEventProducer.java
+
 
 ## 🔐 Security (JWT Auth & Authorization)
 
