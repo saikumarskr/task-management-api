@@ -39,59 +39,94 @@ This project manages **Employees**, **Tasks**, and **Users**, with:
 
 ```text
 task-management-api
-├── pom.xml
-└── src
-    ├── main
-    │   ├── java
-    │   │   └── com.taskmanagement.task_management_api
-    │   │       ├── TaskManagementApiApplication.java
-    │   │       ├── Controller
-    │   │       │   ├── AuthController.java
-    │   │       │   ├── EmployeeController.java
-    │   │       │   └── TaskController.java
-    │   │       ├── DTO
-    │   │       │   ├── AuthRequest.java
-    │   │       │   ├── AuthResponse.java
-    │   │       │   ├── EmployeeRequest.java
-    │   │       │   ├── EmployeeResponse.java
-    │   │       │   ├── TaskRequest.java
-    │   │       │   └── TaskResponse.java
-    │   │       ├── Entity
-    │   │       │   ├── Employee.java
-    │   │       │   ├── Permission.java
-    │   │       │   ├── Priority.java
-    │   │       │   ├── Role.java
-    │   │       │   ├── Task.java
-    │   │       │   ├── TaskStatus.java
-    │   │       │   └── User.java
-    │   │       ├── Exception
-    │   │       │   ├── AuthenticationFailed.java
-    │   │       │   ├── EmployeeNotFoundException.java
-    │   │       │   ├── ErrorResponse.java
-    │   │       │   ├── GlobalExceptionHandler.java
-    │   │       │   └── TaskNotFoundException.java
-    │   │       ├── Filter
-    │   │       │   └── JwtAuthenticationFilter.java
-    │   │       ├── Repository
-    │   │       │   ├── EmployeeRepository.java
-    │   │       │   ├── TaskRepository.java
-    │   │       │   └── UserRepository.java
-    │   │       ├── SecurityConfig
-    │   │       │   ├── OpenApiConfig.java
-    │   │       │   └── SecurityConfig.java
-    │   │       ├── Service
-    │   │       │   ├── CustomUserDetailsService.java
-    │   │       │   ├── EmployeeService.java
-    │   │       │   ├── TaskService.java
-    │   │       │   └── UserService.java
-    │   │       └── Util
-    │   │           └── JwtUtil.java
-    │   └── resources
-    │       └── application.properties
-    └── test
-        └── java
-            └── com.taskmanagement.task_management_api
-                ├── EmployeeServiceTest.java
+    │   .gitattributes
+    │   .gitignore
+    │   HELP.md
+    │   mvnw
+    │   mvnw.cmd
+    │   pom.xml
+    │
+    ├───.mvn
+    │   └───wrapper
+    │           maven-wrapper.properties
+    │
+    ├───src
+    │   ├───main
+    │   │   ├───java
+    │   │   │   └───com
+    │   │   │       └───taskmanagement
+    │   │   │           └───task_management_api
+    │   │   │               │   TaskManagementApiApplication.java
+    │   │   │               │
+    │   │   │               ├───Controller
+    │   │   │               │       AuthController.java
+    │   │   │               │       EmployeeController.java
+    │   │   │               │       TaskController.java
+    │   │   │               │
+    │   │   │               ├───DTO
+    │   │   │               │       AuthRequest.java
+    │   │   │               │       AuthResponse.java
+    │   │   │               │       EmployeeRequest.java
+    │   │   │               │       EmployeeResponse.java
+    │   │   │               │       TaskRequest.java
+    │   │   │               │       TaskResponse.java
+    │   │   │               │
+    │   │   │               ├───Entity
+    │   │   │               │       Employee.java
+    │   │   │               │       Permission.java
+    │   │   │               │       Priority.java
+    │   │   │               │       Role.java
+    │   │   │               │       Task.java
+    │   │   │               │       TaskStatus.java
+    │   │   │               │       User.java
+    │   │   │               │
+    │   │   │               ├───Exception
+    │   │   │               │       AuthenticationFailed.java
+    │   │   │               │       EmployeeNotFoundException.java
+    │   │   │               │       ErrorResponse.java
+    │   │   │               │       GlobalExceptionHandler.java
+    │   │   │               │       TaskNotFoundException.java
+    │   │   │               │
+    │   │   │               ├───Filter
+    │   │   │               │       JwtAuthenticationFilter.java
+    │   │   │               │
+    │   │   │               ├───Kafka
+    │   │   │               │       TaskEventConsumer.java
+    │   │   │               │       TaskEventProducer.java
+    │   │   │               │       TaskService.java
+    │   │   │               │
+    │   │   │               ├───Repository
+    │   │   │               │       EmployeeRepository.java
+    │   │   │               │       TaskRepository.java
+    │   │   │               │       UserRepository.java
+    │   │   │               │
+    │   │   │               ├───SecurityConfig
+    │   │   │               │       OpenApiConfig.java
+    │   │   │               │       SecurityConfig.java
+    │   │   │               │
+    │   │   │               ├───Service
+    │   │   │               │       CustomUserDetailsService.java
+    │   │   │               │       EmployeeService.java
+    │   │   │               │       TaskService.java
+    │   │   │               │       UserService.java
+    │   │   │               │
+    │   │   │               └───Util
+    │   │   │                       JwtUtil.java
+    │   │   │
+    │   │   └───resources
+    │   │       │   application.properties
+    │   │       │   application.yml
+    │   │       │
+    │   │       ├───static
+    │   │       └───templates
+    │   └───test
+    │       └───java
+    │           └───com
+    │               └───taskmanagement
+    │                   └───task_management_api
+    │                           EmployeeServiceTest.java
+    │                           TaskServiceTest.java
+
 ```
 
 # 📌 API List (All Endpoints)
